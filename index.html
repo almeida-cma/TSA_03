@@ -1,0 +1,1135 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Softwares: A Alma da Máquina 💿 | Guia Interativo</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    :root {
+      --bg: #0a0c14;
+      --card: #1e2430;
+      --accent: #6c5ce7;
+      --accent2: #00cec9;
+      --accent3: #fd79a8;
+      --accent4: #fdcb6e;
+      --text: #f0f0f0;
+      --muted: #b2bec3;
+      --success: #00b894;
+      --warning: #fdcb6e;
+      --danger: #d63031;
+      --free: #00b894;
+      --proprietary: #e17055;
+      --os: #6c5ce7;
+      --app: #00cec9;
+    }
+
+    * { 
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', 'Roboto', system-ui, sans-serif;
+      background: radial-gradient(circle at 30% 10%, #2d3436, var(--bg) 80%);
+      color: var(--text);
+      line-height: 1.7;
+      overflow-x: hidden;
+      min-height: 100vh;
+    }
+
+    /* Partículas */
+    #particles {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
+      pointer-events: none;
+    }
+
+    .particle {
+      position: absolute;
+      background: var(--accent);
+      border-radius: 50%;
+      opacity: 0.1;
+      animation: float 25s infinite linear;
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0) rotate(0deg); }
+      50% { transform: translateY(-40px) rotate(180deg); }
+    }
+
+    /* Cabeçalho */
+    header {
+      padding: 4rem 1.5rem;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .header-bg {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: radial-gradient(circle at 50% 50%, rgba(108, 92, 231, 0.2), transparent 70%);
+      z-index: -1;
+    }
+
+    .glitch {
+      position: relative;
+      font-size: 4rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      text-shadow: 0.05em 0 0 rgba(255, 0, 0, 0.75),
+                  -0.025em -0.05em 0 rgba(0, 255, 0, 0.75),
+                  0.025em 0.05em 0 rgba(0, 0, 255, 0.75);
+      animation: glitch 3s infinite;
+    }
+
+    @keyframes glitch {
+      0% { transform: translate(0); }
+      2% { transform: translate(-2px, 2px); }
+      4% { transform: translate(-2px, -2px); }
+      6% { transform: translate(2px, 2px); }
+      8% { transform: translate(2px, -2px); }
+      10% { transform: translate(0); }
+      100% { transform: translate(0); }
+    }
+
+    header p {
+      max-width: 800px;
+      margin: 2rem auto;
+      font-size: 1.2rem;
+      color: var(--muted);
+    }
+
+    .typed-text {
+      color: var(--accent2);
+      border-right: 2px solid var(--accent2);
+      padding-right: 5px;
+      animation: blink 1s infinite;
+    }
+
+    @keyframes blink {
+      0%, 100% { border-color: var(--accent2); }
+      50% { border-color: transparent; }
+    }
+
+    /* Seções */
+    section {
+      max-width: 1200px;
+      margin: auto;
+      padding: 4rem 1.5rem;
+      position: relative;
+    }
+
+    .section-title {
+      font-size: 2.5rem;
+      margin-bottom: 2rem;
+      position: relative;
+      display: inline-block;
+    }
+
+    .section-title::after {
+      content: '';
+      position: absolute;
+      bottom: -10px;
+      left: 0;
+      width: 100px;
+      height: 4px;
+      background: linear-gradient(90deg, var(--accent), var(--accent2));
+      border-radius: 2px;
+    }
+
+    /* Grid */
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 2rem;
+    }
+
+    .card {
+      background: linear-gradient(145deg, rgba(30, 36, 48, 0.95), rgba(10, 12, 20, 0.95));
+      border-radius: 1.5rem;
+      padding: 2rem;
+      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5);
+      transition: transform 0.5s ease, box-shadow 0.5s ease;
+      border: 1px solid rgba(108, 92, 231, 0.2);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 5px;
+      background: linear-gradient(90deg, var(--accent), var(--accent2));
+    }
+
+    .card:hover {
+      transform: translateY(-15px);
+      box-shadow: 0 25px 50px rgba(108, 92, 231, 0.3);
+    }
+
+    .card-icon {
+      font-size: 3rem;
+      margin-bottom: 1rem;
+      color: var(--accent2);
+    }
+
+    /* Tabs */
+    .tabs {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-bottom: 2rem;
+      justify-content: center;
+    }
+
+    .tab-btn {
+      padding: 1rem 2rem;
+      border-radius: 2rem;
+      border: none;
+      background: rgba(255,255,255,0.05);
+      color: var(--text);
+      font-weight: bold;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      border: 2px solid transparent;
+    }
+
+    .tab-btn:hover {
+      background: rgba(108, 92, 231, 0.2);
+    }
+
+    .tab-btn.active {
+      background: rgba(108, 92, 231, 0.3);
+      border-color: var(--accent2);
+    }
+
+    .tab-content {
+      background: rgba(30, 36, 48, 0.8);
+      border-radius: 2rem;
+      padding: 2rem;
+      animation: fadeIn 0.5s ease;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Classificação cards */
+    .license-badge {
+      display: inline-block;
+      padding: 0.3rem 1rem;
+      border-radius: 2rem;
+      font-size: 0.8rem;
+      font-weight: bold;
+      margin-right: 0.5rem;
+    }
+
+    .badge-free { background: var(--free); color: white; }
+    .badge-proprietary { background: var(--proprietary); color: white; }
+    .badge-os { background: var(--os); color: white; }
+    .badge-app { background: var(--app); color: white; }
+
+    /* Tabelas */
+    .table-container {
+      overflow-x: auto;
+      margin: 2rem 0;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      background: rgba(0,0,0,0.2);
+      border-radius: 1rem;
+      overflow: hidden;
+    }
+
+    th {
+      background: rgba(108, 92, 231, 0.3);
+      padding: 1rem;
+      text-align: left;
+    }
+
+    td {
+      padding: 1rem;
+      border-bottom: 1px solid rgba(255,255,255,0.1);
+    }
+
+    tr:hover {
+      background: rgba(255,255,255,0.05);
+    }
+
+    /* Quatro liberdades */
+    .freedoms-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1.5rem;
+      margin: 2rem 0;
+    }
+
+    .freedom-card {
+      background: linear-gradient(145deg, #2d3436, #1e272e);
+      border-radius: 1.5rem;
+      padding: 2rem;
+      text-align: center;
+      border-left: 5px solid;
+    }
+
+    .freedom-0 { border-color: var(--accent); }
+    .freedom-1 { border-color: var(--accent2); }
+    .freedom-2 { border-color: var(--accent3); }
+    .freedom-3 { border-color: var(--accent4); }
+
+    .freedom-number {
+      font-size: 3rem;
+      font-weight: bold;
+      margin-bottom: 1rem;
+    }
+
+    /* Ciclo de vida */
+    .lifecycle {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      align-items: center;
+      gap: 1rem;
+      margin: 3rem 0;
+    }
+
+    .lifecycle-step {
+      background: var(--card);
+      padding: 1.5rem;
+      border-radius: 1rem;
+      min-width: 120px;
+      text-align: center;
+      position: relative;
+      border: 2px solid var(--accent2);
+    }
+
+    .step-number {
+      position: absolute;
+      top: -15px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: var(--accent2);
+      color: var(--bg);
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: bold;
+    }
+
+    .lifecycle-arrow {
+      font-size: 2rem;
+      color: var(--accent);
+    }
+
+    /* Timeline linguagens */
+    .lang-timeline {
+      position: relative;
+      max-width: 800px;
+      margin: 3rem auto;
+      padding: 2rem 0;
+    }
+
+    .lang-timeline::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 4px;
+      height: 100%;
+      background: linear-gradient(to bottom, var(--accent), var(--accent2));
+    }
+
+    .lang-item {
+      position: relative;
+      margin-bottom: 2rem;
+      width: calc(50% - 30px);
+    }
+
+    .lang-item:nth-child(odd) {
+      left: 0;
+      text-align: right;
+      padding-right: 60px;
+    }
+
+    .lang-item:nth-child(even) {
+      left: calc(50% + 30px);
+      padding-left: 60px;
+    }
+
+    .lang-dot {
+      position: absolute;
+      top: 0;
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      background: var(--accent2);
+      border: 4px solid var(--bg);
+    }
+
+    .lang-item:nth-child(odd) .lang-dot { right: -10px; }
+    .lang-item:nth-child(even) .lang-dot { left: -10px; }
+
+    /* Simulador de licenças */
+    .license-simulator {
+      background: rgba(30, 36, 48, 0.9);
+      border-radius: 2rem;
+      padding: 2rem;
+      margin: 3rem 0;
+      border: 1px solid var(--accent);
+    }
+
+    .license-options {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+      justify-content: center;
+      margin: 2rem 0;
+    }
+
+    .license-card {
+      background: rgba(0,0,0,0.3);
+      border-radius: 1rem;
+      padding: 1.5rem;
+      width: 200px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      border: 2px solid transparent;
+      text-align: center;
+    }
+
+    .license-card:hover {
+      transform: scale(1.05);
+      background: rgba(108, 92, 231, 0.2);
+    }
+
+    .license-card.selected {
+      border-color: var(--accent2);
+      background: rgba(0, 206, 201, 0.1);
+    }
+
+    .license-icon {
+      font-size: 3rem;
+      margin-bottom: 1rem;
+    }
+
+    #licenseDescription {
+      background: rgba(0,0,0,0.3);
+      padding: 1.5rem;
+      border-radius: 1rem;
+      margin-top: 1rem;
+    }
+
+    /* Terminal */
+    .terminal {
+      background: #0a0a1a;
+      border-radius: 0.75rem;
+      padding: 1.5rem;
+      font-family: 'Courier New', monospace;
+      font-size: 1rem;
+      color: #00ffaa;
+      margin: 2rem 0;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.7);
+      border: 1px solid rgba(0, 212, 255, 0.2);
+    }
+
+    .terminal-header {
+      display: flex;
+      align-items: center;
+      margin-bottom: 1rem;
+      padding-bottom: 0.5rem;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .terminal-dot {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      margin-right: 8px;
+    }
+
+    .terminal-dot.red { background: #ff5f56; }
+    .terminal-dot.yellow { background: #ffbd2e; }
+    .terminal-dot.green { background: #27ca3f; }
+
+    /* Progresso */
+    .progress-container {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 4px;
+      background: rgba(30, 36, 48, 0.8);
+      z-index: 1000;
+    }
+
+    .progress-bar {
+      height: 100%;
+      background: linear-gradient(90deg, var(--accent), var(--accent2));
+      width: 0%;
+      transition: width 0.3s ease;
+    }
+
+    /* Footer */
+    footer {
+      text-align: center;
+      padding: 3rem 1rem;
+      color: var(--muted);
+      font-size: 0.9rem;
+      border-top: 1px solid rgba(108, 92, 231, 0.2);
+    }
+
+    .fade-in {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: all 0.8s ease;
+    }
+
+    .fade-in.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    @media (max-width: 768px) {
+      .glitch { font-size: 2.5rem; }
+      .lifecycle { flex-direction: column; }
+      .lifecycle-arrow { transform: rotate(90deg); }
+      .lang-timeline::before { left: 30px; }
+      .lang-item {
+        width: calc(100% - 60px);
+        left: 60px !important;
+        text-align: left !important;
+        padding-left: 60px !important;
+        padding-right: 0 !important;
+      }
+      .lang-item:nth-child(odd) .lang-dot { left: -10px; right: auto; }
+    }
+  </style>
+</head>
+<body>
+  <div class="progress-container">
+    <div class="progress-bar" id="progressBar"></div>
+  </div>
+
+  <div id="particles"></div>
+
+  <header>
+    <div class="header-bg"></div>
+    <div class="title-container">
+      <h1 class="glitch">SOFTWARES<span class="glitch"></span><span class="glitch"></span></h1>
+      <h2 style="font-size: 3rem; margin-top: 0.5rem;">A ALMA DA MÁQUINA 💿</h2>
+    </div>
+    <p>Se o hardware é o corpo, o software é a mente. Descubra o mundo dos programas que dão vida aos computadores.</p>
+    <p style="margin-top: 1rem;">
+      <span class="typed-text" id="typedText"></span>
+    </p>
+  </header>
+
+  <!-- Seção 1: O que é Software -->
+  <section>
+    <h2 class="section-title fade-in">💡 O que é Software?</h2>
+    <div class="grid">
+      <div class="card fade-in">
+        <div class="card-icon">🧠</div>
+        <h3>Definição</h3>
+        <p>Software é a parte lógica do computador - o conjunto de instruções que diz ao hardware o que fazer.</p>
+      </div>
+      <div class="card fade-in">
+        <div class="card-icon">🔄</div>
+        <h3>Ciclo Básico</h3>
+        <p><strong>Input → Processamento → Output</strong><br>Entrada de dados, processamento e saída de resultados.</p>
+      </div>
+      <div class="card fade-in">
+        <div class="card-icon">💾</div>
+        <h3>Armazenamento</h3>
+        <p>Permanente: HD/SSD<br>Durante execução: RAM (volátil)</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Seção 2: Classificação (Tabs) -->
+  <section>
+    <h2 class="section-title fade-in">📊 Classificação dos Softwares</h2>
+    
+    <div class="tabs fade-in">
+      <button class="tab-btn active" onclick="showTab('license')">Licença</button>
+      <button class="tab-btn" onclick="showTab('purpose')">Finalidade</button>
+      <button class="tab-btn" onclick="showTab('platform')">Plataforma</button>
+      <button class="tab-btn" onclick="showTab('execution')">Execução</button>
+    </div>
+
+    <div id="license-tab" class="tab-content">
+      <h3>📜 Classificação por Licença</h3>
+      <div class="grid" style="margin-top: 2rem;">
+        <div class="card">
+          <span class="license-badge badge-proprietary">Proprietário</span>
+          <h4>Código Fechado</h4>
+          <p>Criado e distribuído por empresas. Usuários pagam por licenças limitadas.</p>
+          <p><strong>Exemplos:</strong> Microsoft Office, Adobe Photoshop, Windows</p>
+        </div>
+        <div class="card">
+          <span class="license-badge badge-free">Livre / Open Source</span>
+          <h4>Código Aberto</h4>
+          <p>Desenvolvido colaborativamente. Código-fonte acessível e modificável.</p>
+          <p><strong>Exemplos:</strong> Linux, Firefox, LibreOffice, Android</p>
+        </div>
+      </div>
+      <p class="warning" style="margin-top: 1rem; color: var(--accent2);"><i class="fas fa-exclamation-triangle"></i> Software livre NÃO é sinônimo de gratuito! A liberdade é sobre o código, não necessariamente o preço.</p>
+    </div>
+
+    <div id="purpose-tab" class="tab-content" style="display: none;">
+      <h3>🎯 Classificação por Finalidade</h3>
+      <div class="grid" style="margin-top: 2rem;">
+        <div class="card">
+          <i class="fas fa-desktop card-icon"></i>
+          <h4>Sistemas Operacionais</h4>
+          <p>Gerenciam hardware e fornecem interface</p>
+          <p><small>Windows, Linux, macOS, Android</small></p>
+        </div>
+        <div class="card">
+          <i class="fas fa-file-alt card-icon"></i>
+          <h4>Produtividade</h4>
+          <p>Editores de texto, planilhas, apresentações</p>
+          <p><small>Word, Excel, PowerPoint, Google Docs</small></p>
+        </div>
+        <div class="card">
+          <i class="fas fa-paint-brush card-icon"></i>
+          <h4>Design Gráfico</h4>
+          <p>Criação e edição de imagens</p>
+          <p><small>Photoshop, Illustrator, GIMP, CorelDRAW</small></p>
+        </div>
+        <div class="card">
+          <i class="fas fa-video card-icon"></i>
+          <h4>Edição de Vídeo</h4>
+          <p>Manipulação de vídeos</p>
+          <p><small>Premiere Pro, Final Cut, DaVinci Resolve</small></p>
+        </div>
+        <div class="card">
+          <i class="fas fa-database card-icon"></i>
+          <h4>Banco de Dados</h4>
+          <p>Armazenamento e gerenciamento de dados</p>
+          <p><small>MySQL, Oracle, SQL Server, PostgreSQL</small></p>
+        </div>
+        <div class="card">
+          <i class="fas fa-globe card-icon"></i>
+          <h4>Navegação Web</h4>
+          <p>Acesso à internet</p>
+          <p><small>Chrome, Firefox, Edge, Safari</small></p>
+        </div>
+        <div class="card">
+          <i class="fas fa-shield-alt card-icon"></i>
+          <h4>Segurança</h4>
+          <p>Proteção contra ameaças</p>
+          <p><small>Avast, Norton, McAfee, Kaspersky</small></p>
+        </div>
+      </div>
+    </div>
+
+    <div id="platform-tab" class="tab-content" style="display: none;">
+      <h3>📱 Classificação por Plataforma</h3>
+      <div class="grid" style="margin-top: 2rem;">
+        <div class="card">
+          <i class="fas fa-desktop card-icon"></i>
+          <h4>Desktop</h4>
+          <p>Computadores pessoais e estações de trabalho</p>
+          <p><small>Windows, Photoshop, Word</small></p>
+        </div>
+        <div class="card">
+          <i class="fas fa-cloud card-icon"></i>
+          <h4>Web</h4>
+          <p>Executados em servidores, acessados via navegador</p>
+          <p><small>Gmail, Google Docs, Trello</small></p>
+        </div>
+        <div class="card">
+          <i class="fas fa-mobile-alt card-icon"></i>
+          <h4>Mobile</h4>
+          <p>Smartphones e tablets</p>
+          <p><small>Apps Android/iOS, WhatsApp, Instagram</small></p>
+        </div>
+        <div class="card">
+          <i class="fas fa-car card-icon"></i>
+          <h4>Embarcados</h4>
+          <p>Integrados a dispositivos específicos</p>
+          <p><small>Sistemas de carros, eletrodomésticos, equipamentos médicos</small></p>
+        </div>
+      </div>
+    </div>
+
+    <div id="execution-tab" class="tab-content" style="display: none;">
+      <h3>⚙️ Classificação por Modo de Execução</h3>
+      <div class="grid" style="margin-top: 2rem;">
+        <div class="card">
+          <i class="fas fa-cog card-icon"></i>
+          <h4>Nativo</h4>
+          <p>Compilado para arquitetura específica</p>
+          <p><small>C/C++ compilados</small></p>
+        </div>
+        <div class="card">
+          <i class="fas fa-code card-icon"></i>
+          <h4>Interpretado</h4>
+          <p>Executado por interpretador, sem compilação prévia</p>
+          <p><small>Python, JavaScript, PHP</small></p>
+        </div>
+        <div class="card">
+          <i class="fas fa-virtual card-icon"></i>
+          <h4>Virtual</h4>
+          <p>Executado em máquina virtual</p>
+          <p><small>Java (JVM), C# (.NET)</small></p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Seção 3: Quatro Liberdades -->
+  <section>
+    <h2 class="section-title fade-in">🔓 As Quatro Liberdades do Software Livre</h2>
+    <p class="fade-in">Definidas pela Free Software Foundation (FSF)</p>
+    
+    <div class="freedoms-grid fade-in">
+      <div class="freedom-card freedom-0">
+        <div class="freedom-number">0</div>
+        <h3>Executar</h3>
+        <p>Usar o programa para qualquer finalidade</p>
+      </div>
+      <div class="freedom-card freedom-1">
+        <div class="freedom-number">1</div>
+        <h3>Estudar</h3>
+        <p>Acessar e entender o código-fonte</p>
+      </div>
+      <div class="freedom-card freedom-2">
+        <div class="freedom-number">2</div>
+        <h3>Distribuir</h3>
+        <p>Compartilhar cópias com outras pessoas</p>
+      </div>
+      <div class="freedom-card freedom-3">
+        <div class="freedom-number">3</div>
+        <h3>Melhorar</h3>
+        <p>Modificar e publicar as melhorias</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Seção 4: Ciclo de Vida do Software -->
+  <section>
+    <h2 class="section-title fade-in">🔄 Ciclo de Vida do Software</h2>
+    
+    <div class="lifecycle fade-in">
+      <div class="lifecycle-step">
+        <span class="step-number">1</span>
+        <i class="fas fa-clipboard-list" style="font-size: 2rem; margin-bottom: 0.5rem;"></i>
+        <h4>Análise de Requisitos</h4>
+      </div>
+      <div class="lifecycle-arrow">→</div>
+      <div class="lifecycle-step">
+        <span class="step-number">2</span>
+        <i class="fas fa-drafting-compass" style="font-size: 2rem; margin-bottom: 0.5rem;"></i>
+        <h4>Projeto</h4>
+      </div>
+      <div class="lifecycle-arrow">→</div>
+      <div class="lifecycle-step">
+        <span class="step-number">3</span>
+        <i class="fas fa-code" style="font-size: 2rem; margin-bottom: 0.5rem;"></i>
+        <h4>Codificação</h4>
+      </div>
+      <div class="lifecycle-arrow">→</div>
+      <div class="lifecycle-step">
+        <span class="step-number">4</span>
+        <i class="fas fa-vial" style="font-size: 2rem; margin-bottom: 0.5rem;"></i>
+        <h4>Testes</h4>
+      </div>
+      <div class="lifecycle-arrow">→</div>
+      <div class="lifecycle-step">
+        <span class="step-number">5</span>
+        <i class="fas fa-rocket" style="font-size: 2rem; margin-bottom: 0.5rem;"></i>
+        <h4>Implantação</h4>
+      </div>
+      <div class="lifecycle-arrow">→</div>
+      <div class="lifecycle-step">
+        <span class="step-number">6</span>
+        <i class="fas fa-tools" style="font-size: 2rem; margin-bottom: 0.5rem;"></i>
+        <h4>Manutenção</h4>
+      </div>
+      <div class="lifecycle-arrow">→</div>
+      <div class="lifecycle-step">
+        <span class="step-number">7</span>
+        <i class="fas fa-archive" style="font-size: 2rem; margin-bottom: 0.5rem;"></i>
+        <h4>Aposentadoria</h4>
+      </div>
+    </div>
+
+    <div class="table-container fade-in">
+      <table>
+        <tr>
+          <th>Etapa</th>
+          <th>Descrição</th>
+        </tr>
+        <tr>
+          <td>1. Análise de Requisitos</td>
+          <td>Entender o que o software precisa fazer; coletar dados com usuários</td>
+        </tr>
+        <tr>
+          <td>2. Projeto</td>
+          <td>Definir arquitetura, design de interface (UI/UX), modelagem</td>
+        </tr>
+        <tr>
+          <td>3. Codificação</td>
+          <td>Escrever o código-fonte na linguagem escolhida</td>
+        </tr>
+        <tr>
+          <td>4. Testes</td>
+          <td>Unitários, integração, sistema, aceitação, beta</td>
+        </tr>
+        <tr>
+          <td>5. Implantação</td>
+          <td>Empacotar, distribuir, instalar, configurar</td>
+        </tr>
+        <tr>
+          <td>6. Manutenção</td>
+          <td>Correção de bugs, patches de segurança, novas funcionalidades</td>
+        </tr>
+        <tr>
+          <td>7. Aposentadoria</td>
+          <td>Migrar dados, encerrar suporte, remover software</td>
+        </tr>
+      </table>
+    </div>
+  </section>
+
+  <!-- Seção 5: Evolução das Linguagens -->
+  <section>
+    <h2 class="section-title fade-in">📜 Evolução das Linguagens de Programação</h2>
+    
+    <div class="lang-timeline fade-in">
+      <div class="lang-item">
+        <div class="lang-dot"></div>
+        <div class="card" style="padding: 1rem;">
+          <h4>1950 - Fortran</h4>
+          <p>Primeira linguagem de alto nível; científica/engenharia</p>
+        </div>
+      </div>
+      <div class="lang-item">
+        <div class="lang-dot"></div>
+        <div class="card" style="padding: 1rem;">
+          <h4>1960 - COBOL, PL/I</h4>
+          <p>Aplicações comerciais e governamentais</p>
+        </div>
+      </div>
+      <div class="lang-item">
+        <div class="lang-dot"></div>
+        <div class="card" style="padding: 1rem;">
+          <h4>1970 - C</h4>
+          <p>Criação de sistemas operacionais (Unix)</p>
+        </div>
+      </div>
+      <div class="lang-item">
+        <div class="lang-dot"></div>
+        <div class="card" style="padding: 1rem;">
+          <h4>1980 - C++, Objective-C</h4>
+          <p>Orientação a objetos</p>
+        </div>
+      </div>
+      <div class="lang-item">
+        <div class="lang-dot"></div>
+        <div class="card" style="padding: 1rem;">
+          <h4>1990 - Java, Python</h4>
+          <p>Portabilidade (Java), simplicidade (Python)</p>
+        </div>
+      </div>
+      <div class="lang-item">
+        <div class="lang-dot"></div>
+        <div class="card" style="padding: 1rem;">
+          <h4>2000+ - C#, JS, Swift, Go</h4>
+          <p>Web, mobile, cloud, ciência de dados</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="table-container fade-in">
+      <table>
+        <tr>
+          <th>Linguagem</th>
+          <th>Principais Aplicações</th>
+        </tr>
+        <tr><td>Python</td><td>Ciência de dados, IA, web, automação</td></tr>
+        <tr><td>Java</td><td>Aplicações empresariais, Android</td></tr>
+        <tr><td>JavaScript</td><td>Desenvolvimento web (front-end e back-end)</td></tr>
+        <tr><td>C/C++</td><td>Sistemas operacionais, jogos, embarcados</td></tr>
+        <tr><td>C#</td><td>Aplicações Windows, jogos (Unity)</td></tr>
+        <tr><td>PHP</td><td>Desenvolvimento web (back-end)</td></tr>
+        <tr><td>Swift</td><td>Aplicações iOS/macOS</td></tr>
+        <tr><td>Kotlin</td><td>Aplicações Android</td></tr>
+        <tr><td>Go</td><td>Sistemas distribuídos, cloud</td></tr>
+      </table>
+    </div>
+  </section>
+
+  <!-- Seção 6: Simulador de Licenças -->
+  <section>
+    <h2 class="section-title fade-in">⚖️ Simulador de Licenças de Software</h2>
+    
+    <div class="license-simulator fade-in">
+      <h3>Clique em um tipo de licença para saber mais:</h3>
+      
+      <div class="license-options">
+        <div class="license-card" onclick="showLicense('proprietary')">
+          <div class="license-icon">🏢</div>
+          <h4>Proprietária</h4>
+          <p>Windows, Office, Photoshop</p>
+        </div>
+        <div class="license-card" onclick="showLicense('freeware')">
+          <div class="license-icon">🆓</div>
+          <h4>Freeware</h4>
+          <p>Skype, Adobe Reader</p>
+        </div>
+        <div class="license-card" onclick="showLicense('shareware')">
+          <div class="license-icon">⏱️</div>
+          <h4>Shareware</h4>
+          <p>WinRAR, jogos trial</p>
+        </div>
+        <div class="license-card" onclick="showLicense('opensource')">
+          <div class="license-icon">🌐</div>
+          <h4>Open Source</h4>
+          <p>Linux, Firefox, GIMP</p>
+        </div>
+        <div class="license-card" onclick="showLicense('gpl')">
+          <div class="license-icon">📄</div>
+          <h4>GPL</h4>
+          <p>GNU General Public License</p>
+        </div>
+        <div class="license-card" onclick="showLicense('mit')">
+          <div class="license-icon">⚖️</div>
+          <h4>MIT</h4>
+          <p>Permissiva</p>
+        </div>
+      </div>
+      
+      <div id="licenseDescription">
+        <p>Clique em uma licença para ver a descrição detalhada.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Seção 7: Curiosidades -->
+  <section>
+    <h2 class="section-title fade-in">🤔 Você Sabia?</h2>
+    <div class="terminal fade-in">
+      <div class="terminal-header">
+        <div class="terminal-dot red"></div>
+        <div class="terminal-dot yellow"></div>
+        <div class="terminal-dot green"></div>
+        <span style="margin-left: 1rem;">Curiosidades sobre Software</span>
+      </div>
+      <div class="terminal-line">> O primeiro software da história foi escrito por Ada Lovelace em 1843.</div>
+      <div class="terminal-line">> Linux tem mais de 20 milhões de linhas de código.</div>
+      <div class="terminal-line">> O Windows 10 teve mais de 50 milhões de linhas de código.</div>
+      <div class="terminal-line">> Existem mais de 700 linguagens de programação diferentes.</div>
+      <div class="terminal-line">> Software livre NÃO é sinônimo de software gratuito!</div>
+      <div class="terminal-line">> O sistema Android é baseado em Linux (código aberto).</div>
+    </div>
+  </section>
+
+  <!-- Seção 8: Resumo Visual -->
+  <section>
+    <h2 class="section-title fade-in">📌 Resumo Visual</h2>
+    <div class="card fade-in" style="text-align: center;">
+      <pre style="font-family: monospace; color: var(--accent2); overflow-x: auto;">
+┌─────────────────────────────────────────────────────────────┐
+│                        SOFTWARE                              │
+│  (Parte lógica do computador - "a mente")                    │
+└─────────────────────────────────────────────────────────────┘
+                              │
+        ┌─────────────────────┼─────────────────────┐
+        ▼                     ▼                     ▼
+┌───────────────┐    ┌───────────────┐    ┌───────────────┐
+│SISTEMAS       │    │  APLICATIVOS  │    │ LINGUAGENS DE │
+│OPERACIONAIS   │    │               │    │ PROGRAMAÇÃO   │
+├───────────────┤    ├───────────────┤    ├───────────────┤
+│Windows        │    │Produtividade  │    │Python, Java   │
+│Linux          │    │Design         │    │JavaScript, C++│
+│macOS          │    │Edição de Vídeo│    │PHP, Swift     │
+│Android        │    │Banco de Dados │    │Go, Kotlin     │
+│iOS            │    │Navegação      │    │Ruby, C#       │
+│               │    │Segurança      │    │               │
+└───────────────┘    └───────────────┘    └───────────────┘
+      </pre>
+    </div>
+  </section>
+
+  <footer>
+    <div style="max-width: 800px; margin: 0 auto;">
+      <p>💿 <strong>Softwares: A Alma da Máquina</strong> - Entendendo o mundo dos programas.</p>
+      <p style="margin-top: 1rem; font-size: 0.8rem; opacity: 0.7;">
+        Do sistema operacional aos aplicativos, tudo é software.
+      </p>
+      <div style="margin-top: 2rem;">
+        <a href="#" style="color: var(--muted); text-decoration: none;">← Voltar ao início</a>
+      </div>
+      <p style="margin-top: 2rem; font-size: 0.75rem; opacity: 0.5;">
+        Baseado nos estudos de sistemas operacionais e engenharia de software
+      </p>
+    </div>
+  </footer>
+
+  <script>
+    // Inicialização
+    function initParticles() {
+      const particlesContainer = document.getElementById('particles');
+      for (let i = 0; i < 40; i++) {
+        const particle = document.createElement('div');
+        particle.classList.add('particle');
+        const size = Math.random() * 4 + 1;
+        particle.style.width = `${size}px`;
+        particle.style.height = `${size}px`;
+        particle.style.left = `${Math.random() * 100}%`;
+        particle.style.top = `${Math.random() * 100}%`;
+        particle.style.animationDelay = `${Math.random() * 20}s`;
+        particle.style.animationDuration = `${Math.random() * 10 + 15}s`;
+        particlesContainer.appendChild(particle);
+      }
+    }
+
+    function initTypedText() {
+      const texts = [
+        "O software dá vida ao hardware...",
+        "Windows, Linux, macOS...",
+        "Python, Java, JavaScript...",
+        "Software livre vs proprietário...",
+        "Ciclo de vida do desenvolvimento..."
+      ];
+      let index = 0;
+      const typedElement = document.getElementById('typedText');
+      
+      function typeText() {
+        const text = texts[index];
+        typedElement.textContent = '';
+        let charIndex = 0;
+        
+        function typeChar() {
+          if (charIndex < text.length) {
+            typedElement.textContent += text.charAt(charIndex);
+            charIndex++;
+            setTimeout(typeChar, 50);
+          } else {
+            setTimeout(() => deleteText(), 2000);
+          }
+        }
+        
+        function deleteText() {
+          if (typedElement.textContent.length > 0) {
+            typedElement.textContent = typedElement.textContent.slice(0, -1);
+            setTimeout(deleteText, 30);
+          } else {
+            index = (index + 1) % texts.length;
+            setTimeout(typeText, 500);
+          }
+        }
+        typeChar();
+      }
+      typeText();
+    }
+
+    function initScrollAnimations() {
+      const fadeElements = document.querySelectorAll('.fade-in');
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) entry.target.classList.add('visible');
+        });
+      }, { threshold: 0.1 });
+      fadeElements.forEach(el => observer.observe(el));
+    }
+
+    function initProgressBar() {
+      const progressBar = document.getElementById('progressBar');
+      window.addEventListener('scroll', () => {
+        const winHeight = document.documentElement.scrollHeight - window.innerHeight;
+        const scrolled = (window.scrollY / winHeight) * 100;
+        progressBar.style.width = scrolled + '%';
+      });
+    }
+
+    // Tabs
+    function showTab(tab) {
+      document.querySelectorAll('.tab-content').forEach(el => el.style.display = 'none');
+      document.getElementById(`${tab}-tab`).style.display = 'block';
+      
+      document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
+      event.target.classList.add('active');
+    }
+
+    // Licenças
+    function showLicense(type) {
+      const descDiv = document.getElementById('licenseDescription');
+      document.querySelectorAll('.license-card').forEach(card => card.classList.remove('selected'));
+      event.currentTarget.classList.add('selected');
+      
+      const licenses = {
+        proprietary: {
+          title: "Licença Proprietária",
+          desc: "Software com código-fonte fechado. O usuário adquire o direito de uso, mas não pode modificar ou redistribuir. Geralmente pago.",
+          examples: "Microsoft Windows, Adobe Photoshop, Microsoft Office"
+        },
+        freeware: {
+          title: "Freeware",
+          desc: "Software gratuito, mas com código-fonte fechado. O usuário não paga para usar, mas não tem acesso ao código.",
+          examples: "Skype, Adobe Reader, Google Chrome"
+        },
+        shareware: {
+          title: "Shareware",
+          desc: "Software distribuído gratuitamente por um período de teste ou com funcionalidades limitadas. Após o período, é necessário pagar.",
+          examples: "WinRAR, muitos jogos, softwares profissionais em trial"
+        },
+        opensource: {
+          title: "Open Source (Código Aberto)",
+          desc: "Código-fonte disponível para estudo, modificação e distribuição. Pode ser gratuito ou pago.",
+          examples: "Linux, Firefox, LibreOffice, GIMP, Android"
+        },
+        gpl: {
+          title: "GPL (General Public License)",
+          desc: "Licença copyleft. Se você distribuir modificações, deve disponibilizar o código-fonte. Garante que o software permaneça livre.",
+          examples: "Linux kernel, WordPress, MySQL"
+        },
+        mit: {
+          title: "Licença MIT",
+          desc: "Licença permissiva. Permite uso em software proprietário, desde que a licença original seja mantida. Poucas restrições.",
+          examples: "Node.js, jQuery, Rails"
+        }
+      };
+      
+      const l = licenses[type];
+      descDiv.innerHTML = `
+        <h4>${l.title}</h4>
+        <p>${l.desc}</p>
+        <p><strong>Exemplos:</strong> ${l.examples}</p>
+      `;
+    }
+
+    // Inicializar
+    document.addEventListener('DOMContentLoaded', () => {
+      initParticles();
+      initTypedText();
+      initScrollAnimations();
+      initProgressBar();
+    });
+  </script>
+</body>
+</html>
